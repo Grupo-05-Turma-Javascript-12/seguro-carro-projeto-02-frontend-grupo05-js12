@@ -1,17 +1,17 @@
-import './App.css'
-import { ToastContainer } from "react-toastify";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/ReactToastify.css";
-import Navbar from './components/navbar/Navbar';
-import Footer from './components/footer/Footer';
-import Categories from './pages/categories/Categories';
-import Home from './pages/home/Home';
+import './App.css';
 import CategoriesDelete from './components/categories/categoriesDelete/CategoriesDelete';
 import CategoriesForm from './components/categories/categoriesForm/CategoriesForm';
-import Products from './pages/products/Products';
-import ProductForm from './components/products/productForm/ProductForm';
+import Footer from './components/footer/Footer';
+import Navbar from './components/navbar/Navbar';
 import ProductDelete from './components/products/productDelete/ProductDelete';
+import ProductForm from './components/products/productForm/ProductForm';
 import Axiom from './pages/axiom/Axiom';
+import Categories from './pages/categories/Categories';
+import Home from './pages/home/Home';
+import Products from './pages/products/Products';
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
       <ToastContainer />
       <BrowserRouter>
         <Navbar />
-        <div className='min-h-[80hv]'>
+        <div className='min-h-[80vh]'>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
