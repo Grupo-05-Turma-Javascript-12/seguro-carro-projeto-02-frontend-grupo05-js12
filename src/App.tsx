@@ -11,6 +11,7 @@ import CategoriesForm from './components/categories/categoriesForm/CategoriesFor
 import Products from './pages/products/Products';
 import ProductForm from './components/products/productForm/ProductForm';
 import ProductDelete from './components/products/productDelete/ProductDelete';
+import Axiom from './pages/axiom/Axiom';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/cadastrarProduto" element={<ProductForm />} />
             <Route path="/editarProduto/:id" element={<ProductForm />} />
             <Route path="/deletarProduto/:id" element={<ProductDelete />} />
+            <Route path='/axiom' element={<Axiom />}/>
           </Routes>
         </div>
         <Footer />
