@@ -1,7 +1,7 @@
 interface SobreNosCard {
   name: string;
   role: string;
-  photo: string; // 🔥 COLOQUE SUA FOTO EM /public
+  photo: string;
   description: string;
 }
 
