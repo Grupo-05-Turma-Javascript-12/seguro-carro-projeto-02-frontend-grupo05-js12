@@ -4,8 +4,7 @@ import "react-toastify/ReactToastify.css";
 import "./App.css";
 import CategoriesDelete from "./components/categories/categoriesDelete/CategoriesDelete";
 import CategoriesForm from "./components/categories/categoriesForm/CategoriesForm";
-import Footer from "./components/footer/Footer";
-import Navbar from "./components/navbar/Navbar";
+/* import Navbar from "./components/navbar/Navbar"; */
 import ProductsLayout from "./components/products/Layout";
 import ProductDelete from "./components/products/productDelete/ProductDelete";
 import ProductForm from "./components/products/productForm/ProductForm";
@@ -19,7 +18,7 @@ function App() {
     <>
       <ToastContainer />
       <BrowserRouter>
-        <Navbar />
+        {/*         <Navbar /> */}
         <div className="min-h-[80vh]">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -40,7 +39,7 @@ function App() {
             <Route path="/axiom" element={<Axiom />} />
           </Routes>
         </div>
-        <Footer />
+        {/*         <Footer /> */}
       </BrowserRouter>
     </>
   );
