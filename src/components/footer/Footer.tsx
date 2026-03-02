@@ -10,7 +10,7 @@ function Footer() {
   return (
     <footer className="bg-linear-to-r from-slate-800 to-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-      
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center sm:text-left">
 
           <div>
@@ -51,6 +51,8 @@ function Footer() {
             </ul>
           </div>
 
+          
+          <div>
             <h3 className="font-semibold text-lg mb-4">Contato</h3>
             <ul className="space-y-3 text-sm opacity-90">
               <li className="flex justify-center sm:justify-start items-center gap-2">
@@ -69,13 +71,10 @@ function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-lg mb-4">Desenvolvido por</h3>
+            <h3 className="font-semibold text-lg mb-4">Desenvolvido por :</h3>
             <div className="bg-white/5 rounded-xl p-4 w-fit mx-auto sm:mx-0 mb-4">
-              <img src="/axiom-logo.png" className="w-36" alt="Axiom" />
+              <img src="/axiom-footer.png" className="w-38" alt="Axiom" />
             </div>
-            <p className="text-sm opacity-90">
-              Tecnologia e inovação para conectar pessoas
-            </p>
           </div>
 
         </div>
