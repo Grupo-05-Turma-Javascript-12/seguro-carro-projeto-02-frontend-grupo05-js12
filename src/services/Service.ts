@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://seguro-carro-projeto-02-backend-grupo05.onrender.com/",
+  baseURL: "https://seguro-carro-projeto-02-backend-grupo05.onrender.com"
 });
 
 export const findItem = async (url: string, setData: Function) => {
