@@ -13,6 +13,7 @@ import Axiom from "./pages/axiom/Axiom";
 import Categories from "./pages/categories/Categories";
 import Home from "./pages/home/Home";
 import Products from "./pages/products/Products";
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
             <Route path="/axiom" element={<Axiom />} />
           </Routes>
         </div>
-        {/*         <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </>
   );
