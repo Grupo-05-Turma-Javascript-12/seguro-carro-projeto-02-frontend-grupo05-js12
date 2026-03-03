@@ -34,7 +34,7 @@ function ProductCard({ produto, desconto }: CardProdutoProps,) {
 
           <p className="relative top-6 text-red-500 line-through">
             {desconto
-              ? `R$ ${produto.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`
+              ? `${(+produto.preco).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`
               : ""}
           </p>
 
@@ -43,10 +43,10 @@ function ProductCard({ produto, desconto }: CardProdutoProps,) {
               ? desconto < 1
                 ? "Cortesia do plano"
                 : `${desconto.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`
-              : produto.preco < 1
+              : +produto.preco < 1
                 ? "Cortesia do plano"
-                : `R$ ${produto.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`}
-            {!(produto.preco < 1) ? <span className="text-xl">/ano</span> : ""}
+                : `${(+produto.preco).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`}
+            {!(+produto.preco < 1) ? <span className="text-xl">/ano</span> : ""}
           </p>
         </div>
         <div className="flex flex-col gap-4 mt-8">
