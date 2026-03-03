@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import type Product from "../../../models/Product";
+import type ProductDiscount from "../../../models/ProductDiscount";
 
 interface CardProdutoProps {
   produto: Product;
+  desconto?: number;
 }
 
-function ProductCard({ produto }: CardProdutoProps) {
+
+function ProductCard({ produto, desconto }: CardProdutoProps,) {
   return (
     <>
       <div
@@ -29,10 +32,21 @@ function ProductCard({ produto }: CardProdutoProps) {
 
           <p className="text-slate-600 mt-6">{produto.descricao}</p>
 
+          <p className="relative top-6 text-red-500 line-through">
+            {desconto
+              ? `R$ ${produto.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`
+              : ""}
+          </p>
+
           <p className="text-4xl font-bold mt-6 text-slate-900">
-            {produto.preco < 1 
-              ? "Cortesia do plano"
-              : `R$ ${produto.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`}
+            {desconto
+              ? desconto < 1
+                ? "Cortesia do plano"
+                : `${desconto.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`
+              : produto.preco < 1
+                ? "Cortesia do plano"
+                : `R$ ${produto.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`}
+            {!(produto.preco < 1) ? <span className="text-xl">/ano</span> : ""}
           </p>
         </div>
         <div className="flex flex-col gap-4 mt-8">
