@@ -43,16 +43,6 @@ function Navbar() {
             Produtos
           </NavLink>
 
-          <NavLink
-            to="/sobrenos"
-            className={({ isActive }) =>
-              `text-sm font-medium transition-colors ${
-                isActive ? "text-red-500" : "text-gray-800 hover:text-red-500"
-              }`
-            }
-          >
-            Sobre Nós
-          </NavLink>
 
           <NavLink
             to="/axiom"

@@ -117,6 +117,7 @@ function ProductForm() {
               <input
                 type="text"
                 name="nome"
+                placeholder="Digite o nome do produto"
                 value={produto.nome}
                 onChange={atualizarEstado}
                 className="w-full border border-slate-400 rounded-lg p-3 bg-gray-100"
@@ -128,7 +129,7 @@ function ProductForm() {
               <input
                 type="number"
                 name="preco"
-                placeholder="Digite o preço"
+                placeholder="Digite o preço do produto"
                 value={produto.preco}
                 onChange={atualizarEstado}
                 min="0"
@@ -147,7 +148,7 @@ function ProductForm() {
                 <option value="">Escolha uma categoria</option>
                 {categorias.map((cat) => (
                   <option key={cat.id} value={cat.id}>
-                    {cat.descricao}
+                    Plano {cat.nome}
                   </option>
                 ))}
               </select>
@@ -156,6 +157,7 @@ function ProductForm() {
             <div>
               <label className="block text-sm mb-2">Descrição</label>
               <textarea
+                placeholder="Digite o descritivo do produto"
                 name="descricao"
                 value={produto.descricao}
                 onChange={atualizarEstado}
