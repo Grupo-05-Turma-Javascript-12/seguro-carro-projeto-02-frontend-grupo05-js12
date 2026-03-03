@@ -1,4 +1,4 @@
-![Logo Vittare](public\logo-navbar-black.png)
+![Logo Vittare](./public/logo-navbar-black.png)
 
 ## 🏗️ Visão Geral
 Este é o frontend institucional da **Vittare**, um sistema para gerenciamento de usuários, produtos e categorias relacionados a seguros de automóveis. A aplicação permite o cadastro de usuários com informações do veículo, a gestão de produtos de seguro e suas categorias, além de consultas específicas como listagem de produtos ativos e cálculo de descontos com base no ano do carro.
@@ -8,23 +8,24 @@ Este é o frontend institucional da **Vittare**, um sistema para gerenciamento d
 ## 🧠 Arquitetura do Projeto
 O projeto segue uma estrutura modular para facilitar a manutenção e o crescimento sustentável do código.
 
-### 📂 Estrutura de Diretórios
 
+## 📁 Estrutura de Diretórios
+
+```bash
 src/
-│
-├── app/                # Configuração global da aplicação
+├── app/                    # Configuração global
 │   ├── App.tsx
 │   ├── main.tsx
 │   ├── routes.tsx
 │   └── providers.tsx
 │
-├── assets/             # Imagens, SVGs, fontes
+├── assets/                 # Imagens, SVGs, fontes
 │
-├── components/         # Componentes reutilizáveis globais
-│   ├── ui/             # Botões, inputs, cards genéricos
-│   ├── layout/         # Navbar, Footer, Sidebar
+├── components/             # Componentes reutilizáveis globais
+│   ├── ui/                 # Botões, inputs, cards
+│   └── layout/             # Navbar, Footer, Sidebar
 │
-├── features/           # Organização por domínio 
+├── features/               # Organização por domínio
 │   ├── auth/
 │   │   ├── pages/
 │   │   ├── components/
@@ -32,23 +33,19 @@ src/
 │   │   ├── types.ts
 │   │   └── hooks.ts
 │   │
-│   ├── seguros/
-│   │   ├── pages/
-│   │   ├── components/
-│   │   ├── services/
-│   │   ├── types.ts
-│   │   └── hooks.ts
+│   └── seguros/
+│       ├── pages/
+│       ├── components/
+│       ├── services/
+│       ├── types.ts
+│       └── hooks.ts
 │
-├── hooks/              # Hooks globais
-│
-├── services/           # Configurações globais (ex: axios)
-│   └── api.ts
-│
-├── types/              # Tipagens globais
-│
-├── utils/              # Funções utilitárias
-│
-└── styles/             # CSS global
+├── hooks/                  # Hooks globais
+├── services/               # Configurações globais (ex: api.ts)
+├── types/                  # Tipagens globais
+├── utils/                  # Funções utilitárias
+└── styles/                 # CSS global
+```
 
 ---
 
@@ -108,4 +105,4 @@ O projeto foi planejado e executado por: Ana Beatriz Monteiro, Andreza Luiza, C�
 
 **Axiom Software Developers**
 
-![Logo Axiom](public\axiom-footer.png)
+![Logo Axiom](./public/axiom-footer.png)
