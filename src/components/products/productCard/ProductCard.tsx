@@ -30,11 +30,9 @@ function ProductCard({ produto }: CardProdutoProps) {
           <p className="text-slate-600 mt-6">{produto.descricao}</p>
 
           <p className="text-4xl font-bold mt-6 text-slate-900">
-            R${" "}
-            {produto.preco.toLocaleString("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-            })}
+            {produto.preco < 1 
+              ? "Cortesia do plano"
+              : `R$ ${produto.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`}
           </p>
         </div>
         <div className="flex flex-col gap-4 mt-8">
