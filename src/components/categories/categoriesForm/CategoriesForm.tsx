@@ -95,7 +95,7 @@ function CategoriesForm() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default CategoriesForm;
