@@ -84,4 +84,4 @@ function CategoriesDelete() {
   );
 }
 
-export default CategoriesDelete;
+export default CategoriesDelete
