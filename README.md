@@ -1,19 +1,54 @@
-![Logo Elevva](./public/logoelevva.png)
+![Logo Vittare](public\logo-navbar-black.png)
 
 ## 🏗️ Visão Geral
-Este é o frontend institucional da ** **, desenvolvido com foco em performance, componentização e escalabilidade. A aplicação utiliza uma arquitetura moderna de **Single Page Application (SPA)** com código 100% tipado.
+Este é o frontend institucional da **Vittare**, um sistema para gerenciamento de usuários, produtos e categorias relacionados a seguros de automóveis. A aplicação permite o cadastro de usuários com informações do veículo, a gestão de produtos de seguro e suas categorias, além de consultas específicas como listagem de produtos ativos e cálculo de descontos com base no ano do carro.
+
 
 ---
 ## 🧠 Arquitetura do Projeto
 O projeto segue uma estrutura modular para facilitar a manutenção e o crescimento sustentável do código.
 
 ### 📂 Estrutura de Diretórios
-* **src/components/**: Componentes reutilizáveis (Navbar, Footer, Cards).
-* **src/pages/**: Páginas da aplicação organizadas por domínio (Home, Sobre Nós).
-* **src/assets/**: Arquivos estáticos como imagens e SVGs.
-* **src/utils/**: Funções auxiliares e lógica de suporte.
-* **App.tsx**: Configuração central de rotas e provedores.
-* **main.tsx**: Ponto de entrada da aplicação React.
+
+src/
+│
+├── app/                # Configuração global da aplicação
+│   ├── App.tsx
+│   ├── main.tsx
+│   ├── routes.tsx
+│   └── providers.tsx
+│
+├── assets/             # Imagens, SVGs, fontes
+│
+├── components/         # Componentes reutilizáveis globais
+│   ├── ui/             # Botões, inputs, cards genéricos
+│   ├── layout/         # Navbar, Footer, Sidebar
+│
+├── features/           # Organização por domínio 
+│   ├── auth/
+│   │   ├── pages/
+│   │   ├── components/
+│   │   ├── services/
+│   │   ├── types.ts
+│   │   └── hooks.ts
+│   │
+│   ├── seguros/
+│   │   ├── pages/
+│   │   ├── components/
+│   │   ├── services/
+│   │   ├── types.ts
+│   │   └── hooks.ts
+│
+├── hooks/              # Hooks globais
+│
+├── services/           # Configurações globais (ex: axios)
+│   └── api.ts
+│
+├── types/              # Tipagens globais
+│
+├── utils/              # Funções utilitárias
+│
+└── styles/             # CSS global
 
 ---
 
@@ -71,7 +106,6 @@ O projeto segue uma estrutura modular para facilitar a manutenção e o crescime
 
 O projeto foi planejado e executado por: Ana Beatriz Monteiro, Andreza Luiza, César Henrique, João Henrique, Josenil Soares, Raylander Ribeiro e Stephanie Mayara 
 
-![Logo Axiom](./public/axiom-logo.png)
-
-
 **Axiom Software Developers**
+
+![Logo Axiom](public\axiom-footer.png)
