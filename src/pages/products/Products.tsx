@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 import ProductCard from "../../components/products/productCard/ProductCard";
 import type Product from "../../models/Product";
 import { findItem } from "../../services/Service";
+import { ToastAlerta } from "../../utils/ToastAlert";
 
 function Products() {
-  const navigate = useNavigate();
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [produtos, setProdutos] = useState<Product[]>([]);
@@ -22,8 +21,9 @@ function Products() {
       await findItem("/produtos", setProdutos);
     } catch (error: any) {
       console.error("Erro ao buscar produtos:", error);
-      alert(
-        "Ocorreu um erro ao buscar os produtos. Por favor, tente novamente."
+      ToastAlerta(
+        "Ocorreu um erro ao buscar os produtos. Por favor, tente novamente.",
+        "error"
       );
     } finally {
       setIsLoading(false);

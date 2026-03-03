@@ -30,7 +30,7 @@ const ProductsLayout: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white min-h-screen p-10">
+      <div className="bg-white p-10">
         <Outlet />
       </div>
     </div>

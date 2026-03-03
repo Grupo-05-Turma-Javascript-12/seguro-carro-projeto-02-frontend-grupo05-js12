@@ -1,8 +1,8 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-import type Product from "../../../models/Product";
-import { findItem, updateItem } from "../../../services/Service";
+import type Category from "../../../models/Category";
+import { findItem, registerItem, updateItem } from "../../../services/Service";
 import { ToastAlerta } from "../../../utils/ToastAlert";
 
 function ProductForm() {
@@ -11,55 +11,93 @@ function ProductForm() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [produto, setProduto] = useState<Product>({} as Product);
+  const [produto, setProduto] = useState<any>({
+    id: 0,
+    nome: "",
+    preco: "",
+    descricao: "",
+    esta_ativo: true,
+    categoria: { id: 0 },
+  });
+
+  const [categorias, setCategorias] = useState<Category[]>([]);
 
   async function buscarPorId(id: string) {
     try {
       await findItem(`/produtos/${id}`, setProduto);
-    } catch (error: any) {
-      ToastAlerta("Erro ao buscar o produto.", "erro");
+    } catch {
+      ToastAlerta("Erro ao buscar o produto.", "error");
     }
   }
+
+  async function buscarCategorias() {
+    try {
+      await findItem(`/categorias`, setCategorias);
+    } catch {
+      ToastAlerta("Erro ao buscar categorias.", "error");
+    }
+  }
+
+  useEffect(() => {
+    buscarCategorias();
+  }, []);
 
   useEffect(() => {
     if (id) buscarPorId(id);
   }, [id]);
 
   function atualizarEstado(
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     const { name, value } = e.target;
 
     setProduto({
       ...produto,
-      [name]: name === "preco" ? Number(value) : value,
+      [name]: value,
     });
   }
 
-  function retornar() {
-    navigate("/produtos");
+  function selecionarCategoria(e: ChangeEvent<HTMLSelectElement>) {
+    const categoriaSelecionada = categorias.find(
+      (cat) => cat.id === Number(e.target.value)
+    );
+
+    if (categoriaSelecionada) {
+      setProduto({
+        ...produto,
+        categoria: categoriaSelecionada,
+      });
+    }
   }
 
   async function gerarNovoProduto(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsLoading(true);
-    if (id !== undefined) {
-      try {
-        await updateItem(`/produtos/${id}`, produto, setProduto);
-        ToastAlerta("O Produto foi atualizado com sucesso!", "sucesso");
-      } catch (error: any) {
-        ToastAlerta("Erro ao atualizar o produto.", "erro");
+
+    const produtoParaEnviar = {
+      ...produto,
+      preco: Number(produto.preco),
+    };
+
+    try {
+      if (id) {
+        await updateItem(`/produtos`, produtoParaEnviar, setProduto);
+        ToastAlerta("Produto atualizado com sucesso!", "success");
+      } else {
+        await registerItem(`/produtos`, produtoParaEnviar, setProduto);
+        ToastAlerta("Produto cadastrado com sucesso!", "success");
       }
-    } else {
-      try {
-        await updateItem(`/produtos`, produto, setProduto);
-        ToastAlerta("O Produto foi cadastrado com sucesso!", "sucesso");
-      } catch (error: any) {
-        ToastAlerta("Erro ao cadastrar o produto.", "erro");
-      }
+      retornar();
+    } catch (error) {
+      ToastAlerta("Erro ao salvar o produto.", "error");
+      console.log(error);
     }
+
     setIsLoading(false);
-    retornar();
+  }
+
+  function retornar() {
+    navigate("/produtos");
   }
 
   return (
@@ -79,7 +117,6 @@ function ProductForm() {
               <input
                 type="text"
                 name="nome"
-                placeholder="Digite o nome do produto"
                 value={produto.nome}
                 onChange={atualizarEstado}
                 className="w-full border border-slate-400 rounded-lg p-3 bg-gray-100"
@@ -91,21 +128,28 @@ function ProductForm() {
               <input
                 type="number"
                 name="preco"
-                placeholder="Digite o preço do produto"
+                placeholder="Digite o preço"
                 value={produto.preco}
                 onChange={atualizarEstado}
-                className="w-full border border-slate-400 rounded-lg p-3 bg-gray-100"
+                min="0"
+                step="0.01"
+                className="w-full border border-slate-400 rounded-lg p-3 bg-gray-100 appearance-none"
               />
             </div>
 
             <div>
               <label className="block text-sm mb-2">Categoria</label>
               <select
-                name="categoria"
-                onChange={atualizarEstado}
+                value={produto.categoria?.id || ""}
+                onChange={selecionarCategoria}
                 className="w-full border border-slate-400 rounded-lg p-3 bg-gray-100"
               >
-                <option>Escolha uma categoria</option>
+                <option value="">Escolha uma categoria</option>
+                {categorias.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.descricao}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -113,7 +157,6 @@ function ProductForm() {
               <label className="block text-sm mb-2">Descrição</label>
               <textarea
                 name="descricao"
-                placeholder="Digite a descrição do produto"
                 value={produto.descricao}
                 onChange={atualizarEstado}
                 rows={5}
@@ -123,10 +166,9 @@ function ProductForm() {
           </div>
 
           <div className="flex flex-col justify-between">
-            <p className="text-xl text-slate-600 w-105">
+            <p className="text-xl text-slate-600">
               Preencha o formulário para adicionar um novo produto.
-              <br />O produto deve ter nome, preço, descrição e você deve
-              escolher uma categoria para ele.
+              <br />O produto deve ter nome, preço, descrição e uma categoria.
             </p>
 
             <div className="flex flex-col gap-4 mt-8">
