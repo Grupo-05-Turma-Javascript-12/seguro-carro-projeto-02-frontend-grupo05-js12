@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -6,7 +6,9 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center">
 
         <div className="flex items-center gap-2">
-          <img src="/logo-navbar-black.png" alt="Vittare" className="h-8" />
+          <Link to={'/'}>
+            <img src="/logo-navbar-black.png" alt="Vittare" className="h-8" />
+          </Link>
         </div>
 
         <nav className="flex-1 flex justify-center gap-8">

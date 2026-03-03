@@ -14,11 +14,13 @@ function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center sm:text-left">
 
           <div>
-            <img
-              src="/logo-footer-white.png"
-              alt="Vittare"
-              className="h-10 mx-auto sm:mx-0 mb-4"
-            />
+            <Link to='/home'>
+              <img
+                src="/logo-footer-white.png"
+                alt="Vittare"
+                className="h-10 mx-auto sm:mx-0 mb-4"
+              />
+            </Link>
             <p className="text-sm opacity-90">
               Transformando o seguro automotivo em uma experiência simples,
               acessível e confiável.
@@ -29,23 +31,23 @@ function Footer() {
             <h3 className="font-semibold text-lg mb-4">Páginas</h3>
             <ul className="space-y-3 text-sm opacity-90">
               <li>
-                <Link to="/#hero" className="hover:underline">
+                <Link to="/home" className="hover:underline">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/#produtos" className="hover:underline">
+                <Link to="/produtos" className="hover:underline">
                   Produtos
                 </Link>
               </li>
               <li>
-                <Link to="/#categorias" className="hover:underline">
+                <Link to="/categorias" className="hover:underline">
                   Categorias
                 </Link>
               </li>
               <li>
-                <Link to="/sobrenos" className="hover:underline">
-                  Sobre Nós
+                <Link to="/axiom" className="hover:underline">
+                  Axiom
                 </Link>
               </li>
             </ul>
@@ -73,7 +75,9 @@ function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-4">Desenvolvido por :</h3>
             <div className="bg-white/5 rounded-xl p-4 w-fit mx-auto sm:mx-0 mb-4">
-              <img src="/axiom-footer.png" className="w-38" alt="Axiom" />
+              <Link to={'/axiom'}>
+                <img src="/axiom-footer.png" className="w-38" alt="Axiom" />
+              </Link>
             </div>
           </div>
 
