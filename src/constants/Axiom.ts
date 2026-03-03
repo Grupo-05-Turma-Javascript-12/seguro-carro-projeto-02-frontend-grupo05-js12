@@ -52,6 +52,7 @@ export const cards: SobreNosCard[] = [
     name: "Stephanie Mayara",
     role: "Desenvolvedora Fullstack",
     photo: "/stephanie.jpg",
-    description: "Descrição detalhada da Stephanie.",
+    description:
+      "Desenvolvedora Full Stack em formação, estudando e criando aplicações web com HTML, CSS, JavaScript, React, TypeScript e Node.js. Busco evoluir constantemente, aplicando na prática os conhecimentos adquiridos e desenvolvendo soluções funcionais e organizadas. ",
   },
 ];
